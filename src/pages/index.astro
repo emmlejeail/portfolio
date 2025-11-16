@@ -12,16 +12,48 @@ const allPosts = await getSinglePage(posts);
 const sortedPosts = sortByDate(allPosts);
 const featuredPosts = sortedPosts.slice(0, 3); // Get latest 3 posts
 
-// Tech stack icons (you can customize these)
+// Tech stack with actual logos from CDN
 const techStack = [
-  { name: "Go", icon: "🟢" },
-  { name: "Java", icon: "☕" },
-  { name: "Python", icon: "🐍" },
-  { name: "TypeScript", icon: "🔷" },
-  { name: "Docker", icon: "🐳" },
-  { name: "Kubernetes", icon: "⚙️" },
-  { name: "PostgreSQL", icon: "🐘" },
-  { name: "React", icon: "⚛️" }
+  { 
+    name: "Go", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+    color: "#00ADD8"
+  },
+  { 
+    name: "Java", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    color: "#ED8B00"
+  },
+  { 
+    name: "Python", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    color: "#3776AB"
+  },
+  { 
+    name: "TypeScript", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    color: "#3178C6"
+  },
+  { 
+    name: "Docker", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    color: "#2496ED"
+  },
+  { 
+    name: "Kubernetes", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    color: "#326CE5"
+  },
+  { 
+    name: "PostgreSQL", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    color: "#336791"
+  },
+  { 
+    name: "React", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    color: "#61DAFB"
+  }
 ];
 ---
 
@@ -112,12 +144,23 @@ const techStack = [
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-10">
-          <h3 class="h5 text-center mb-8 text-text/70">Technologies I work with</h3>
-          <div class="flex flex-wrap justify-center items-center gap-8">
+          <h3 class="h5 text-center mb-12 text-text/70">Technologies I work with</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
             {techStack.map((tech) => (
-              <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-theme-light shadow-sm">
-                <span class="text-2xl">{tech.icon}</span>
-                <span class="font-medium text-sm">{tech.name}</span>
+              <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-theme-light shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <img 
+                    src={tech.logo} 
+                    alt={tech.name}
+                    class="w-10 h-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    style={`filter: grayscale(1); transition: filter 0.3s ease;`}
+                    onmouseover={`this.style.filter = 'grayscale(0)';`}
+                    onmouseout={`this.style.filter = 'grayscale(1)';`}
+                  />
+                </div>
+                <span class="font-medium text-xs text-center text-text/70 group-hover:text-text transition-colors duration-300">
+                  {tech.name}
+                </span>
               </div>
             ))}
           </div>

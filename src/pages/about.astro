@@ -60,60 +60,123 @@ const experiences = [
   }
 ];
 
-// Skills data organized by category
-const skillsCategories = [
-  {
-    title: "Programming Languages",
-    skills: [
-      { name: "Go", level: "expert" },
-      { name: "Java", level: "expert" },
-      { name: "Python", level: "expert" },
-      { name: "Scala", level: "advanced" },
-      { name: "TypeScript", level: "advanced" },
-      { name: "SQL", level: "advanced" }
-    ]
+// All skills with logos - flattened for card display
+const allSkills = [
+  // Programming Languages
+  { 
+    name: "Go", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+    category: "Programming Languages"
   },
-  {
-    title: "Backend Frameworks",
-    skills: [
-      { name: "Flask", level: "expert" },
-      { name: "FastAPI", level: "expert" },
-      { name: "Django", level: "advanced" }
-    ]
+  { 
+    name: "Java", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    category: "Programming Languages"
   },
-  {
-    title: "Frontend",
-    skills: [
-      { name: "React", level: "advanced" }
-    ]
+  { 
+    name: "Python", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    category: "Programming Languages"
   },
-  {
-    title: "Data & ML",
-    skills: [
-      { name: "Apache Spark", level: "expert" },
-      { name: "TensorFlow", level: "advanced" },
-      { name: "PyTorch", level: "advanced" },
-      { name: "Apache Kafka", level: "advanced" },
-      { name: "Apache Airflow", level: "expert" }
-    ]
+  { 
+    name: "Scala", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg",
+    category: "Programming Languages"
   },
-  {
-    title: "Cloud & Infrastructure",
-    skills: [
-      { name: "Docker", level: "expert" },
-      { name: "Kubernetes", level: "expert" },
-      { name: "Terraform", level: "advanced" },
-      { name: "Helm", level: "advanced" },
-      { name: "Prometheus", level: "advanced" },
-      { name: "Grafana", level: "advanced" }
-    ]
+  { 
+    name: "TypeScript", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    category: "Programming Languages"
   },
-  {
-    title: "Databases",
-    skills: [
-      { name: "PostgreSQL", level: "expert" },
-      { name: "MongoDB", level: "advanced" }
-    ]
+  
+  // Backend Frameworks
+  { 
+    name: "Flask", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
+    category: "Backend"
+  },
+  { 
+    name: "FastAPI", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+    category: "Backend"
+  },
+  { 
+    name: "Django", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
+    category: "Backend"
+  },
+  
+  // Frontend
+  { 
+    name: "React", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    category: "Frontend"
+  },
+  
+  // Data & ML
+  { 
+    name: "Apache Spark", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg",
+    category: "Data & ML"
+  },
+  { 
+    name: "TensorFlow", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    category: "Data & ML"
+  },
+  { 
+    name: "PyTorch", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+    category: "Data & ML"
+  },
+  { 
+    name: "Apache Kafka", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
+    category: "Data & ML"
+  },
+  { 
+    name: "Apache Airflow", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
+    category: "Data & ML"
+  },
+  
+  // Cloud & Infrastructure
+  { 
+    name: "Docker", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    category: "Infrastructure"
+  },
+  { 
+    name: "Kubernetes", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    category: "Infrastructure"
+  },
+  { 
+    name: "Terraform", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    category: "Infrastructure"
+  },
+  { 
+    name: "Prometheus", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
+    category: "Infrastructure"
+  },
+  { 
+    name: "Grafana", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
+    category: "Infrastructure"
+  },
+  
+  // Databases
+  { 
+    name: "PostgreSQL", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    category: "Databases"
+  },
+  { 
+    name: "MongoDB", 
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    category: "Databases"
   }
 ];
 ---
@@ -254,28 +317,19 @@ const skillsCategories = [
       <div class="row">
         <div class="lg:col-12">
           <h2 class="h2 mb-12 text-center">Skills & Technologies</h2>
-          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {skillsCategories.map((category) => (
-              <div class="rounded-2xl border border-border/50 bg-white p-6 shadow-sm dark:bg-theme-light">
-                <h3 class="mb-6 text-lg font-bold">{category.title}</h3>
-                <div class="space-y-4">
-                  {category.skills.map((skill) => (
-                    <div class="flex items-center justify-between">
-                      <span class="font-medium">{skill.name}</span>
-                      <div class="flex items-center gap-1">
-                        {[1, 2, 3].map((level) => (
-                          <div class={`h-2 w-2 rounded-full ${
-                            (skill.level === 'expert' && level <= 3) ||
-                            (skill.level === 'advanced' && level <= 2) ||
-                            (skill.level === 'intermediate' && level <= 1)
-                              ? 'bg-primary'
-                              : 'bg-border/30'
-                          }`}></div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+          <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-6">
+            {allSkills.map((skill) => (
+              <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-theme-light shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <img 
+                    src={skill.logo} 
+                    alt={skill.name}
+                    class="w-10 h-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
                 </div>
+                <span class="font-medium text-xs text-center text-text/70 group-hover:text-text transition-colors duration-300">
+                  {skill.name}
+                </span>
               </div>
             ))}
           </div>
