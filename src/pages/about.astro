@@ -19,14 +19,15 @@ const experiences = [
     id: "datadog-lead",
     title: "Senior Software Engineer / Tech Lead",
     company: "Datadog",
+    companyLogo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/datadog/datadog-original.svg",
     period: "2024 - Present",
     location: "Remote",
     achievements: [
-      "Developed attacker clustering mechanism for advanced threat detection",
-      "Mentored junior engineers on security product development",
-      "Built more accurate API endpoint route detection using statistical approaches",
-      "Expanded AI Security Analyst coverage across multiple attack vectors",
-      "Led development of AI Guard (LLM Firewall) for protecting AI applications"
+      "Built a system that groups attackers by behavior to help security teams spot patterns",
+      "Mentored junior engineers and helped them grow into security experts",
+      "Improved how we detect API endpoints using statistical methods (made it way more accurate)",
+      "Extended our AI security analyst to catch more types of attacks",
+      "Led the team building AI Guard - think of it as a bouncer for AI applications"
     ],
     technologies: ["Go", "Python", "Kubernetes", "PostgreSQL", "Machine Learning"]
   },
@@ -34,13 +35,14 @@ const experiences = [
     id: "datadog-eng",
     title: "Software Engineer II",
     company: "Datadog",
+    companyLogo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/datadog/datadog-original.svg",
     period: "2022 - 2024",
     location: "Remote",
     achievements: [
-      "Built core features for Application Security Management product",
-      "Improved detection algorithms for distributed cyber attacks",
-      "Implemented automated mitigation strategies for security threats",
-      "Collaborated on real-time threat intelligence systems"
+      "Built key features that help developers secure their applications",
+      "Made our attack detection smarter - especially for attacks spread across multiple systems",
+      "Created automated responses that kick in when we detect threats",
+      "Worked on systems that share threat intelligence in real-time across teams"
     ],
     technologies: ["Go", "Java", "Docker", "Kafka", "Terraform"]
   },
@@ -48,13 +50,14 @@ const experiences = [
     id: "amadeus",
     title: "Software Engineer",
     company: "Amadeus",
+    companyLogo: "/images/amadeus.png",
     period: "2019 - 2022",
     location: "Nice, France",
     achievements: [
-      "Developed machine learning models for flight price & booking optimization",
-      "Served as Scrum Master for a team of 10 engineers",
-      "Built data engineering pipelines for training ML models at scale",
-      "Optimized booking algorithms resulting in improved customer experience"
+      "Built ML models that helped predict flight prices and optimize bookings",
+      "Led a team of 10 engineers as Scrum Master (learned a lot about herding cats!)",
+      "Created data pipelines that fed our machine learning models with clean training data", 
+      "Made booking algorithms smarter, which meant happier customers and better conversion rates"
     ],
     technologies: ["Scala", "Apache Spark", "TensorFlow", "Apache Airflow", "SQL"]
   }
@@ -196,8 +199,7 @@ const allSkills = [
             <h1 class="h1 mb-4">Emmanuelle Lejeail</h1>
             <h2 class="h4 mb-6 text-primary">Senior Software Engineer & Tech Lead</h2>
             <p class="text-lg text-text/80 mb-8 leading-relaxed">
-              Specialized in AI-powered security products, machine learning, and distributed systems. 
-              Building intelligent solutions that protect organizations from emerging cyber threats.
+              I love building software that makes the internet safer. I work with AI and machine learning to create tools that help catch attackers and protect applications from getting compromised.
             </p>
             <div class="flex flex-wrap gap-4">
               <a 
@@ -227,7 +229,7 @@ const allSkills = [
                 class="btn btn-outline-primary inline-flex items-center justify-center"
               >
                 <span class="mr-2 text-base flex-shrink-0">📝</span>
-                <span>Publications</span>
+                <span>Writing</span>
               </a>
             </div>
           </div>
@@ -253,11 +255,11 @@ const allSkills = [
   </section>
 
   <!-- Experience Section -->
-  <section class="section">
+  <section class="section-sm">
     <div class="container">
       <div class="row">
         <div class="lg:col-12">
-          <h2 class="h2 mb-12 text-center">Professional Experience</h2>
+          <h2 class="h2 mb-8 text-center">Professional Experience</h2>
           <div class="space-y-8">
             {experiences.map((exp, index) => (
               <div class="group relative overflow-hidden rounded-2xl border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:bg-theme-light">
@@ -268,10 +270,19 @@ const allSkills = [
                 
                 <div class="lg:ml-8">
                   <div class="mb-6 flex flex-wrap items-start justify-between gap-4">
-                    <div>
-                      <h3 class="text-xl font-bold text-dark dark:text-white mb-2">{exp.title}</h3>
-                      <p class="text-lg font-semibold text-primary mb-1">{exp.company}</p>
-                      <p class="text-sm text-text/70">{exp.location}</p>
+                    <div class="flex items-start gap-4">
+                      <div class="flex-shrink-0">
+                        <img 
+                          src={exp.companyLogo} 
+                          alt={exp.company}
+                          class="w-12 h-12 object-contain rounded-lg bg-white p-2 shadow-sm border border-border/20"
+                        />
+                      </div>
+                      <div>
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-2">{exp.title}</h3>
+                        <p class="text-lg font-semibold text-primary mb-1">{exp.company}</p>
+                        <p class="text-sm text-text/70">{exp.location}</p>
+                      </div>
                     </div>
                     <div class="text-right">
                       <span class="inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
@@ -312,11 +323,11 @@ const allSkills = [
   </section>
 
   <!-- Skills Section -->
-  <section class="section bg-theme-light dark:bg-darkmode-theme-light">
+  <section class="section-sm bg-theme-light dark:bg-darkmode-theme-light">
     <div class="container">
       <div class="row">
         <div class="lg:col-12">
-          <h2 class="h2 mb-12 text-center">Skills & Technologies</h2>
+          <h2 class="h2 mb-8 text-center">Skills & Technologies</h2>
           <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-6">
             {allSkills.map((skill) => (
               <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-theme-light shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
@@ -339,17 +350,86 @@ const allSkills = [
   </section>
 
   <!-- Education Section -->
-  <section class="section">
+  <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-8">
-          <h2 class="h2 mb-12 text-center">Education</h2>
+          <h2 class="h2 mb-8 text-center">Education</h2>
           <div class="rounded-2xl border border-border/50 bg-white p-8 shadow-sm dark:bg-theme-light">
-            <div class="text-center">
-              <h3 class="text-xl font-bold mb-2">Master of Science in Computer Science</h3>
-              <p class="text-lg text-primary font-semibold mb-2">Université de Technologie de Compiègne</p>
-              <p class="text-text/70 mb-4">Minor in Data Science and Machine Learning</p>
-              <p class="text-sm text-text/60">Graduated 2019</p>
+            <div class="flex items-center gap-6">
+              <div class="flex-shrink-0">
+                <img 
+                  src="/images/utc.png" 
+                  alt="Université de Technologie de Compiègne"
+                  class="w-16 h-16 object-contain rounded-lg bg-white p-2 shadow-sm border border-border/20"
+                />
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold mb-2">Master of Science in Computer Science</h3>
+                <p class="text-lg text-primary font-semibold mb-2">Université de Technologie de Compiègne</p>
+                <p class="text-text/70 mb-2">Minor in Data Science and Machine Learning</p>
+                <p class="text-sm text-text/60">Graduated 2019</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Passions Section -->
+  <section class="section-sm bg-theme-light dark:bg-darkmode-theme-light">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <h2 class="h2 mb-8 text-center">Beyond the Code</h2>
+          <p class="text-center text-lg text-text/70 mb-12 leading-relaxed">
+            When I'm not building security tools, these passions keep me curious and creative
+          </p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Running -->
+            <div class="text-center group">
+              <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center group-hover:from-primary/20 group-hover:to-secondary/20 transition-all duration-300">
+                <span class="text-3xl">🏃‍♀️</span>
+              </div>
+              <h3 class="h5 mb-3">Running</h3>
+              <p class="text-text/70 text-sm leading-relaxed">
+                Long runs for mental clarity and endurance. Some of my best technical insights happen at mile 5.
+              </p>
+            </div>
+
+            <!-- Ramen -->
+            <div class="text-center group">
+              <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center group-hover:from-primary/20 group-hover:to-secondary/20 transition-all duration-300">
+                <span class="text-3xl">🍜</span>
+              </div>
+              <h3 class="h5 mb-3">Ramen</h3>
+              <p class="text-text/70 text-sm leading-relaxed">
+                Cooking and eating ramen is my meditation. The patience for good broth mirrors good code craftsmanship.
+              </p>
+            </div>
+
+            <!-- D&D -->
+            <div class="text-center group">
+              <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center group-hover:from-primary/20 group-hover:to-secondary/20 transition-all duration-300">
+                <span class="text-3xl">🎲</span>
+              </div>
+              <h3 class="h5 mb-3">D&D</h3>
+              <p class="text-text/70 text-sm leading-relaxed">
+                Collaborative storytelling and creative problem-solving. Being a DM teaches you about creating engaging experiences.
+              </p>
+            </div>
+
+            <!-- Wine -->
+            <div class="text-center group">
+              <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center group-hover:from-primary/20 group-hover:to-secondary/20 transition-all duration-300">
+                <span class="text-3xl">🍷</span>
+              </div>
+              <h3 class="h5 mb-3">Wine</h3>
+              <p class="text-text/70 text-sm leading-relaxed">
+                Understanding terroir—how environment shapes outcomes. Like pairing engineers with the right opportunities.
+              </p>
             </div>
           </div>
         </div>
@@ -358,11 +438,11 @@ const allSkills = [
   </section>
 
   <!-- Contact CTA -->
-  <section class="section bg-gradient-to-r from-primary/5 to-secondary/5">
+  <section class="section-sm bg-gradient-to-r from-primary/5 to-secondary/5">
     <div class="container">
       <div class="row justify-center">
         <div class="text-center lg:col-8">
-          <h2 class="h2 mb-6">Let's Connect</h2>
+          <h2 class="h2 mb-4">Let's Connect</h2>
           <p class="text-lg text-text/80 mb-8">
             I'm always interested in discussing new opportunities, sharing knowledge about AI security, 
             or connecting with fellow engineers and tech leaders.

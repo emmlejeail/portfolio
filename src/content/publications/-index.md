@@ -1,16 +1,14 @@
 ---
-title: "Publications & Writing"
-meta_title: "Publications"
-description: "Technical articles and blog posts by Emmanuelle Lejeail on AI security, software engineering, and technology leadership"
+title: "Speaking & Writing"
+meta_title: "Speaking & Writing"
+description: "Conference talks, technical articles, and thoughts by Emmanuelle Lejeail on AI security, software engineering, and technology leadership"
 image: ""
 draft: false
 ---
 
-Here are some of my published articles and technical writings on AI-powered security, software engineering practices, and technology leadership.
+Here are some articles I've written about AI-powered security, software engineering, and the things I've learned along the way.
 
-## Technical Articles
-
-### Recent Publications
+## Recent Articles
 
 **[Mitigate Account Takeovers with Datadog App and API Protection](https://www.datadoghq.com/blog/mitigate-account-takeovers/)**  
 *Published on Datadog Blog - April 28, 2025*  
@@ -44,4 +42,4 @@ Key topics covered:
 
 ---
 
-*Additional articles and publications will be added as they become available.*
+*I write about things that interest me - mostly security, AI, and the occasional engineering adventure. More articles coming soon!*

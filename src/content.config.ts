@@ -26,25 +26,6 @@ const blogCollection = defineCollection({
   }),
 });
 
-// Author collection schema
-const authorsCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/authors" }),
-  schema: z.object({
-    ...commonFields,
-    social: z
-      .array(
-        z
-          .object({
-            name: z.string().optional(),
-            icon: z.string().optional(),
-            link: z.string().optional(),
-          })
-          .optional(),
-      )
-      .optional(),
-    draft: z.boolean().optional(),
-  }),
-});
 
 // Pages collection schema
 const pagesCollection = defineCollection({
@@ -108,58 +89,15 @@ const homepageCollection = defineCollection({
   }),
 });
 
-// Call to Action collection schema
-const ctaSectionCollection = defineCollection({
-  loader: glob({
-    pattern: "call-to-action.{md,mdx}",
-    base: "src/content/sections",
-  }),
-  schema: z.object({
-    enable: z.boolean(),
-    title: z.string(),
-    description: z.string(),
-    image: z.string(),
-    button: z.object({
-      enable: z.boolean(),
-      label: z.string(),
-      link: z.string(),
-    }),
-  }),
-});
 
-// Testimonials Section collection schema
-const testimonialSectionCollection = defineCollection({
-  loader: glob({
-    pattern: "testimonial.{md,mdx}",
-    base: "src/content/sections",
-  }),
-  schema: z.object({
-    enable: z.boolean(),
-    title: z.string(),
-    description: z.string(),
-    testimonials: z.array(
-      z.object({
-        name: z.string(),
-        avatar: z.string(),
-        designation: z.string(),
-        content: z.string(),
-      }),
-    ),
-  }),
-});
 
 // Export collections
 export const collections = {
   // Pages
   homepage: homepageCollection,
   blog: blogCollection,
-  authors: authorsCollection,
   pages: pagesCollection,
   about: aboutCollection,
   contact: contactCollection,
   publications: publicationsCollection,
-
-  // sections
-  ctaSection: ctaSectionCollection,
-  testimonialSection: testimonialSectionCollection,
 };

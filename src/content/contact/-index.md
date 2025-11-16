@@ -12,7 +12,6 @@ I'm always open to discussing new opportunities, sharing insights about AI secur
 
 Whether you're interested in:
 - **Collaboration opportunities** on innovative security projects
-- **Technical consulting** for AI-powered security solutions
 - **Speaking engagements** or technical presentations
 - **Mentorship** or career guidance in software engineering
 - **General discussions** about technology and cybersecurity

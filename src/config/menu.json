@@ -5,11 +5,11 @@
       "url": "/"
     },
     {
-      "name": "About",
+      "name": "About Me",
       "url": "/about"
     },
     {
-      "name": "Publications",
+      "name": "Speaking & Writing",
       "url": "/publications"
     },
     {
@@ -23,16 +23,12 @@
   ],
   "footer": [
     {
-      "name": "About",
+      "name": "About Me",
       "url": "/about"
     },
     {
       "name": "Contact",
       "url": "/contact"
-    },
-    {
-      "name": "Privacy Policy",
-      "url": "/privacy-policy"
     }
   ]
 }

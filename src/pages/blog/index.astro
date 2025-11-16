@@ -6,8 +6,8 @@ import Base from "@/layouts/Base.astro";
 import { getListPage, getSinglePage } from "@/lib/contentParser.astro";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
-import PageHeader from "@/partials/PageHeader.astro";
 import PostSidebar from "@/partials/PostSidebar.astro";
+import { markdownify } from "@/lib/utils/textConverter";
 
 const BLOG_FOLDER = "blog";
 
@@ -30,8 +30,32 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
   image={postIndex.data.image}
   description={postIndex.data.description}
 >
-  <PageHeader title={postIndex?.data.title} />
-  <section class="section">
+  <!-- Hero Section -->
+  <section class="section-sm bg-gradient-to-r from-primary/5 to-secondary/5 relative overflow-hidden">
+    <!-- Decorative Ramen Background -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+      <img 
+        src="/images/ramen.png" 
+        alt="Ramen decoration"
+        class="w-96 h-96 object-contain transform -rotate-12"
+      />
+    </div>
+    <div class="container relative z-10">
+      <div class="row justify-center">
+        <div class="text-center lg:col-8">
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <span class="text-5xl">👨‍🍳</span>
+            <h1 set:html={markdownify(postIndex.data.title)} class="h1 mb-0" />
+          </div>
+          <p class="text-lg text-text/80 mb-8">
+            Cooking up thoughts on software engineering, security, and technology adventures
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
     <div class="container">
       <div class="row gx-5">
         <!-- blog posts -->

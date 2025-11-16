@@ -13,6 +13,25 @@ if (publicationsIndex.data.draft) {
   return Astro.redirect("/404");
 }
 
+// Talks data
+const talks = [
+  {
+    title: "WAF: Making a Problematic Security Tool Suck Less",
+    conference: "Defcon 31 - AppSec Village",
+    url: "https://www.youtube.com/watch?v=4eDtrbPpZyU&list=PLrBLsgTCBQVpyirtbE8d29QVKxpb938QB&index=9&t=1626s",
+    date: "August 2023",
+    coPresenter: "Emile Spir",
+    description: "Sharing a return of experience on building and operating a WAF at scale and trying to reduce the noise and improve quality of alerts. This talk covers practical strategies for making Web Application Firewalls more effective and less frustrating for security teams.",
+    topics: [
+      "WAF deployment and configuration at scale",
+      "Reducing false positives and alert fatigue",
+      "Improving signal-to-noise ratio in security monitoring",
+      "Practical lessons from production WAF operations"
+    ],
+    type: "conference"
+  }
+];
+
 // Publication data - we'll extract this from markdown for better styling
 const publications = [
   {
@@ -23,7 +42,7 @@ const publications = [
     description: "This comprehensive guide explores how organizations can detect, respond to, and prevent account takeover (ATO) attacks using Datadog's App and API Protection platform. The article covers automated detection of suspicious login activities, real-time security signals, and flexible response strategies including IP blocking and WAF rule customization.",
     topics: [
       "Account takeover attack patterns and risks",
-      "Automated detection through login endpoint instrumentation", 
+      "Automated detection through login endpoint instrumentation",
       "Real-time security signal generation and analysis",
       "Multi-layered response strategies and prevention techniques"
     ]
@@ -31,13 +50,13 @@ const publications = [
   {
     title: "Detect and respond to evolving attacks with Attacker Clustering",
     url: "https://www.datadoghq.com/blog/attacker-clustering/",
-    date: "February 26, 2025", 
+    date: "February 26, 2025",
     coAuthor: "Océane Bordeau",
     description: "This article introduces Datadog's new Attacker Clustering feature in App and API Protection (AAP), which helps security teams detect and respond to distributed attacks. The piece explores how the clustering mechanism groups attacker behaviors by analyzing patterns in attributes like user agents and attacker fingerprints, enabling security teams to track evolving attack strategies and streamline incident response.",
     topics: [
       "Advanced threat detection through behavioral clustering",
       "Adapting to evolving attacker strategies",
-      "Streamlined incident response workflows", 
+      "Streamlined incident response workflows",
       "Pattern recognition for distributed attacks"
     ]
   }
@@ -51,21 +70,124 @@ const publications = [
   image={image}
 >
   <!-- Hero Section -->
-  <section class="section-sm bg-gradient-to-r from-primary/5 to-secondary/5">
-    <div class="container">
+  <section class="section-sm bg-gradient-to-r from-primary/5 to-secondary/5 relative overflow-hidden">
+    <!-- Decorative Ramen Background -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+      <img
+        src="/images/ramen.png"
+        alt="Ramen decoration"
+        class="w-96 h-96 object-contain transform rotate-12"
+      />
+    </div>
+    <div class="container relative z-10">
       <div class="row justify-center">
         <div class="text-center lg:col-8">
-          <h1 set:html={markdownify(title)} class="h1 mb-4" />
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <img
+              src="/images/ramen.png"
+              alt="Writing"
+              class="w-12 h-12 object-contain"
+            />
+            <h1 set:html={markdownify(title)} class="h1 mb-0" />
+          </div>
           <p class="text-lg text-text/80 mb-8">
-            Technical articles and research on AI-powered security, software engineering, and technology leadership
+            Conference talks, technical articles, and thoughts on AI security, software engineering, and technology leadership
           </p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Speaking Section -->
+  <section class="section-sm bg-theme-light/50 dark:bg-darkmode-theme-light/50">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="mb-12">
+            <h2 class="h3 mb-8 text-center">Conference Talks</h2>
+            <div class="grid gap-8">
+              {talks.map((talk, index) => (
+                <article class="group relative overflow-hidden rounded-2xl border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 dark:bg-theme-light dark:shadow-dark">
+                  <!-- Talk Header -->
+                  <div class="mb-6">
+                    <div class="mb-4 flex flex-wrap items-center gap-3 text-sm text-text/60">
+                      <span class="rounded-full bg-secondary/10 px-3 py-1 text-secondary font-medium">{talk.conference}</span>
+                      <time class="font-medium">{talk.date}</time>
+                      {talk.coPresenter && (
+                        <span class="italic">Co-presented with {talk.coPresenter}</span>
+                      )}
+                      <span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">
+                        <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        Video
+                      </span>
+                    </div>
+                    <h3 class="group-hover:text-primary transition-colors duration-200">
+                      <a
+                        href={talk.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-xl font-bold leading-tight lg:text-2xl"
+                      >
+                        {talk.title}
+                      </a>
+                    </h3>
+                  </div>
+
+                  <!-- Talk Content -->
+                  <div class="mb-6">
+                    <p class="text-text/80 leading-relaxed mb-6">
+                      {talk.description}
+                    </p>
+
+                    <!-- Topics -->
+                    <div class="mb-6">
+                      <h4 class="font-semibold text-sm uppercase tracking-wide text-text/70 mb-3">
+                        Key Topics Covered
+                      </h4>
+                      <div class="grid gap-2 sm:grid-cols-2">
+                        {talk.topics.map((topic) => (
+                          <div class="flex items-start gap-2">
+                            <div class="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"></div>
+                            <span class="text-sm text-text/70">{topic}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Call to Action -->
+                  <div class="flex items-center justify-between">
+                    <a
+                      href={talk.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 font-semibold text-primary transition-all hover:gap-3 hover:text-primary/80"
+                    >
+                      Watch Talk
+                      <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m6-10V7a3 3 0 01-3 3H6a3 3 0 01-3-3V4a3 3 0 013-3h8a3 3 0 013 3v3z" />
+                      </svg>
+                    </a>
+                    <div class="text-xs text-text/50">
+                      {talk.conference}
+                    </div>
+                  </div>
+
+                  <!-- Decorative Element -->
+                  <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br from-secondary/10 to-primary/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Publications Grid -->
-  <section class="section">
+  <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-10">
@@ -84,7 +206,7 @@ const publications = [
                       )}
                     </div>
                     <h3 class="group-hover:text-primary transition-colors duration-200">
-                      <a 
+                      <a
                         href={article.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -100,7 +222,7 @@ const publications = [
                     <p class="text-text/80 leading-relaxed mb-6">
                       {article.description}
                     </p>
-                    
+
                     <!-- Topics -->
                     <div class="mb-6">
                       <h4 class="font-semibold text-sm uppercase tracking-wide text-text/70 mb-3">
@@ -119,7 +241,7 @@ const publications = [
 
                   <!-- Call to Action -->
                   <div class="flex items-center justify-between">
-                    <a 
+                    <a
                       href={article.url}
                       target="_blank"
                       rel="noopener noreferrer"
