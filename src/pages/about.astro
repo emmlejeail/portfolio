@@ -12,6 +12,110 @@ const { title, description, meta_title, image } = aboutIndex.data;
 if (aboutIndex.data.draft) {
   return Astro.redirect("/404");
 }
+
+// Experience data
+const experiences = [
+  {
+    id: "datadog-lead",
+    title: "Senior Software Engineer / Tech Lead",
+    company: "Datadog",
+    period: "2024 - Present",
+    location: "Remote",
+    achievements: [
+      "Developed attacker clustering mechanism for advanced threat detection",
+      "Mentored junior engineers on security product development",
+      "Built more accurate API endpoint route detection using statistical approaches",
+      "Expanded AI Security Analyst coverage across multiple attack vectors",
+      "Led development of AI Guard (LLM Firewall) for protecting AI applications"
+    ],
+    technologies: ["Go", "Python", "Kubernetes", "PostgreSQL", "Machine Learning"]
+  },
+  {
+    id: "datadog-eng",
+    title: "Software Engineer II",
+    company: "Datadog",
+    period: "2022 - 2024",
+    location: "Remote",
+    achievements: [
+      "Built core features for Application Security Management product",
+      "Improved detection algorithms for distributed cyber attacks",
+      "Implemented automated mitigation strategies for security threats",
+      "Collaborated on real-time threat intelligence systems"
+    ],
+    technologies: ["Go", "Java", "Docker", "Kafka", "Terraform"]
+  },
+  {
+    id: "amadeus",
+    title: "Software Engineer",
+    company: "Amadeus",
+    period: "2019 - 2022",
+    location: "Nice, France",
+    achievements: [
+      "Developed machine learning models for flight price & booking optimization",
+      "Served as Scrum Master for a team of 10 engineers",
+      "Built data engineering pipelines for training ML models at scale",
+      "Optimized booking algorithms resulting in improved customer experience"
+    ],
+    technologies: ["Scala", "Apache Spark", "TensorFlow", "Apache Airflow", "SQL"]
+  }
+];
+
+// Skills data organized by category
+const skillsCategories = [
+  {
+    title: "Programming Languages",
+    skills: [
+      { name: "Go", level: "expert" },
+      { name: "Java", level: "expert" },
+      { name: "Python", level: "expert" },
+      { name: "Scala", level: "advanced" },
+      { name: "TypeScript", level: "advanced" },
+      { name: "SQL", level: "advanced" }
+    ]
+  },
+  {
+    title: "Backend Frameworks",
+    skills: [
+      { name: "Flask", level: "expert" },
+      { name: "FastAPI", level: "expert" },
+      { name: "Django", level: "advanced" }
+    ]
+  },
+  {
+    title: "Frontend",
+    skills: [
+      { name: "React", level: "advanced" }
+    ]
+  },
+  {
+    title: "Data & ML",
+    skills: [
+      { name: "Apache Spark", level: "expert" },
+      { name: "TensorFlow", level: "advanced" },
+      { name: "PyTorch", level: "advanced" },
+      { name: "Apache Kafka", level: "advanced" },
+      { name: "Apache Airflow", level: "expert" }
+    ]
+  },
+  {
+    title: "Cloud & Infrastructure",
+    skills: [
+      { name: "Docker", level: "expert" },
+      { name: "Kubernetes", level: "expert" },
+      { name: "Terraform", level: "advanced" },
+      { name: "Helm", level: "advanced" },
+      { name: "Prometheus", level: "advanced" },
+      { name: "Grafana", level: "advanced" }
+    ]
+  },
+  {
+    title: "Databases",
+    skills: [
+      { name: "PostgreSQL", level: "expert" },
+      { name: "MongoDB", level: "advanced" }
+    ]
+  }
+];
 ---
 
 <Base
@@ -20,28 +124,225 @@ if (aboutIndex.data.draft) {
   description={description}
   image={image}
 >
-  <section class="section-sm">
+  <!-- Hero Section -->
+  <section class="section-sm bg-gradient-to-br from-primary/5 via-transparent to-secondary/5">
+    <div class="container">
+      <div class="row items-center">
+        <div class="lg:col-8">
+          <div class="mb-8 lg:mb-0">
+            <h1 class="h1 mb-4">Emmanuelle Lejeail</h1>
+            <h2 class="h4 mb-6 text-primary">Senior Software Engineer & Tech Lead</h2>
+            <p class="text-lg text-text/80 mb-8 leading-relaxed">
+              Specialized in AI-powered security products, machine learning, and distributed systems. 
+              Building intelligent solutions that protect organizations from emerging cyber threats.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a 
+                href="https://www.linkedin.com/in/emmanuelle-lejeail/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary inline-flex items-center justify-center"
+              >
+                <svg class="mr-2 h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a 
+                href="https://github.com/emmlejeail" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline-primary inline-flex items-center justify-center"
+              >
+                <svg class="mr-2 h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a 
+                href="/publications"
+                class="btn btn-outline-primary inline-flex items-center justify-center"
+              >
+                <span class="mr-2 text-base flex-shrink-0">📝</span>
+                <span>Publications</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-4">
+          <div class="text-center">
+            {
+              image && (
+                <ImageMod
+                  class="mx-auto rounded-2xl shadow-lg"
+                  src={image}
+                  width={300}
+                  height={300}
+                  alt={title}
+                  format="webp"
+                />
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="lg:col-12">
+          <h2 class="h2 mb-12 text-center">Professional Experience</h2>
+          <div class="space-y-8">
+            {experiences.map((exp, index) => (
+              <div class="group relative overflow-hidden rounded-2xl border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:bg-theme-light">
+                <!-- Timeline dot -->
+                <div class="absolute -left-4 top-8 hidden h-8 w-8 rounded-full bg-primary shadow-lg lg:flex lg:items-center lg:justify-center">
+                  <div class="h-4 w-4 rounded-full bg-white"></div>
+                </div>
+                
+                <div class="lg:ml-8">
+                  <div class="mb-6 flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-dark dark:text-white mb-2">{exp.title}</h3>
+                      <p class="text-lg font-semibold text-primary mb-1">{exp.company}</p>
+                      <p class="text-sm text-text/70">{exp.location}</p>
+                    </div>
+                    <div class="text-right">
+                      <span class="inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                        {exp.period}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="mb-6">
+                    <h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-text/70">Key Achievements</h4>
+                    <ul class="space-y-2">
+                      {exp.achievements.map((achievement) => (
+                        <li class="flex items-start gap-3">
+                          <div class="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"></div>
+                          <span class="text-text/80">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-text/70">Technologies Used</h4>
+                    <div class="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech) => (
+                        <span class="rounded-full bg-theme-light px-3 py-1 text-xs font-medium text-text/70 dark:bg-darkmode-theme-light">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section bg-theme-light dark:bg-darkmode-theme-light">
+    <div class="container">
+      <div class="row">
+        <div class="lg:col-12">
+          <h2 class="h2 mb-12 text-center">Skills & Technologies</h2>
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {skillsCategories.map((category) => (
+              <div class="rounded-2xl border border-border/50 bg-white p-6 shadow-sm dark:bg-theme-light">
+                <h3 class="mb-6 text-lg font-bold">{category.title}</h3>
+                <div class="space-y-4">
+                  {category.skills.map((skill) => (
+                    <div class="flex items-center justify-between">
+                      <span class="font-medium">{skill.name}</span>
+                      <div class="flex items-center gap-1">
+                        {[1, 2, 3].map((level) => (
+                          <div class={`h-2 w-2 rounded-full ${
+                            (skill.level === 'expert' && level <= 3) ||
+                            (skill.level === 'advanced' && level <= 2) ||
+                            (skill.level === 'intermediate' && level <= 1)
+                              ? 'bg-primary'
+                              : 'bg-border/30'
+                          }`}></div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section">
     <div class="container">
       <div class="row justify-center">
-        <div class="text-center md:col-10 lg:col-7">
-          {
-            image && (
-              <ImageMod
-                class="mx-auto mb-6 rounded-lg"
-                src={image}
-                width={200}
-                height={200}
-                alt={title}
-                format="webp"
-              />
-            )
-          }
-          <h2 set:html={markdownify(title)} class="h3 mb-6" />
-          <div class="content">
-            <Content />
+        <div class="lg:col-8">
+          <h2 class="h2 mb-12 text-center">Education</h2>
+          <div class="rounded-2xl border border-border/50 bg-white p-8 shadow-sm dark:bg-theme-light">
+            <div class="text-center">
+              <h3 class="text-xl font-bold mb-2">Master of Science in Computer Science</h3>
+              <p class="text-lg text-primary font-semibold mb-2">Université de Technologie de Compiègne</p>
+              <p class="text-text/70 mb-4">Minor in Data Science and Machine Learning</p>
+              <p class="text-sm text-text/60">Graduated 2019</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section bg-gradient-to-r from-primary/5 to-secondary/5">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="text-center lg:col-8">
+          <h2 class="h2 mb-6">Let's Connect</h2>
+          <p class="text-lg text-text/80 mb-8">
+            I'm always interested in discussing new opportunities, sharing knowledge about AI security, 
+            or connecting with fellow engineers and tech leaders.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/contact" class="btn btn-primary">
+              Get In Touch
+            </a>
+            <a href="mailto:emmanuelle.lejeail@gmail.com" class="btn btn-outline-primary">
+              Send Email
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 </Base>
+
+<style>
+  /* Timeline line for large screens */
+  @media (min-width: 1024px) {
+    .section .container .row .lg\\:col-12 > .space-y-8::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 2rem;
+      bottom: 2rem;
+      width: 2px;
+      background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+      border-radius: 1px;
+    }
+    
+    .section .container .row .lg\\:col-12 > .space-y-8 {
+      position: relative;
+    }
+  }
+</style>

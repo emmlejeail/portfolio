@@ -1,51 +1,53 @@
 ---
 # Banner
 banner:
-  title: "The Ultimate Starter Template You Need To Start Your Astro Project"
-  content: "Astroplate is a free starter template built with Astro and TailwindCSS, providing everything you need to jumpstart your Astro project and save valuable time."
+  title: "Senior Software Engineer & Tech Lead"
+  content: "Hi, I'm Emmanuelle Lejeail. I'm a senior software engineer working on building security products that leverage AI. I specialize in creating innovative solutions that enhance cybersecurity through artificial intelligence and machine learning."
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Get Started For Free"
-    link: "https://github.com/zeon-studio/astroplate"
+    label: "View My Work"
+    link: "/blog"
 
 # Features
 features:
-  - title: "What's Included in Astroplate"
+  - title: "AI-Powered Security Solutions"
     image: "/images/service-1.png"
-    content: "Astroplate is a comprehensive starter template that includes everything you need to get started with your Astro project. What's Included in Astroplate"
+    content: "I specialize in developing cutting-edge security products that harness the power of artificial intelligence to protect organizations from emerging threats."
     bulletpoints:
-      - "10+ Pre-build pages"
-      - "95+ Google Pagespeed Score"
-      - "Build with Astro and TailwindCSS for easy and customizable styling"
-      - "Fully responsive on all devices"
-      - "SEO-optimized for better search engine rankings"
-      - "**Open-source and free** for personal and commercial use"
+      - "Machine Learning for Threat Detection"
+      - "Automated Security Response Systems"
+      - "Advanced Analytics for Risk Assessment"
+      - "Scalable Security Architecture Design"
+      - "Real-time Monitoring and Alerting"
+      - "**Enterprise-grade** security solutions"
     button:
       enable: false
-      label: "Get Started Now"
+      label: "Learn More"
       link: "#"
 
-  - title: "Discover the Key Features Of Astro"
+  - title: "Technical Leadership & Engineering Excellence"
     image: "/images/service-2.png"
-    content: "Astro is an all-in-one web framework for building fast, content-focused websites. It offers a range of exciting features for developers and website creators. Some of the key features are:"
+    content: "As a Tech Lead, I drive technical strategy and mentor development teams to deliver high-quality software solutions. My core programming expertise includes:"
     bulletpoints:
-      - "Zero JS, by default: No JavaScript runtime overhead to slow you down."
-      - "Customizable: Tailwind, MDX, and 100+ other integrations to choose from."
-      - "UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more."
+      - "**Go (Golang)** - Building high-performance backend services and microservices"
+      - "**Java** - Enterprise-scale applications and distributed systems"
+      - "**Python** - AI/ML pipelines, data processing, and security automation"
+      - "Cloud technologies, DevOps practices, and agile methodologies"
+      - "Team mentoring and technical architecture design"
     button:
       enable: true
-      label: "Get Started Now"
-      link: "https://github.com/zeon-studio/astroplate"
+      label: "Get In Touch"
+      link: "/contact"
 
-  - title: "The Top Reasons to Choose Astro for Your Next Project"
+  - title: "Innovation in Cybersecurity"
     image: "/images/service-3.png"
-    content: "With Astro, you can build modern and content-focused websites without sacrificing performance or ease of use."
+    content: "I'm passionate about staying at the forefront of cybersecurity innovation, combining traditional security principles with emerging AI technologies."
     bulletpoints:
-      - "Instantly load static sites for better user experience and SEO."
-      - "Intuitive syntax and support for popular frameworks make learning and using Astro a breeze."
-      - "Use any front-end library or framework, or build custom components, for any project size."
-      - "Built on cutting-edge technology to keep your projects up-to-date with the latest web standards."
+      - "Research and development in AI-driven threat detection algorithms"
+      - "Implementation of zero-trust security architectures"
+      - "Collaboration with cross-functional teams to deliver secure solutions"
+      - "Continuous learning and adaptation to evolving security landscapes"
     button:
       enable: false
       label: ""

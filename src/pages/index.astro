@@ -1,104 +1,205 @@
 ---
 import ImageMod from "@/components/ImageMod.astro";
 import Base from "@/layouts/Base.astro";
-import { getListPage } from "@/lib/contentParser.astro";
-import { markdownify } from "@/lib/utils/textConverter";
-import CallToAction from "@/partials/CallToAction.astro";
-import Testimonial from "@/partials/Testimonial.astro";
-import { FaCheck } from "react-icons/fa";
+import BlogCard from "@/components/BlogCard.astro";
+import { getCollection } from "astro:content";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
 
-const homepage = await getListPage("homepage", "-index");
-const call_to_action = await getListPage("ctaSection", "call-to-action");
-const testimonial = await getListPage("testimonialSection", "testimonial");
+// Get blog posts
+const posts = await getCollection("blog");
+const allPosts = await getSinglePage(posts);
+const sortedPosts = sortByDate(allPosts);
+const featuredPosts = sortedPosts.slice(0, 3); // Get latest 3 posts
 
-const { banner, features } = homepage.data;
+// Tech stack icons (you can customize these)
+const techStack = [
+  { name: "Go", icon: "🟢" },
+  { name: "Java", icon: "☕" },
+  { name: "Python", icon: "🐍" },
+  { name: "TypeScript", icon: "🔷" },
+  { name: "Docker", icon: "🐳" },
+  { name: "Kubernetes", icon: "⚙️" },
+  { name: "PostgreSQL", icon: "🐘" },
+  { name: "React", icon: "⚛️" }
+];
 ---
 
-<Base>
-  <!-- Banner -->
-  <section class="section pt-14">
+<Base title="Emmanuelle Lejeail - Senior Software Engineer" description="Hi, I'm Emmanuelle! Senior Software Engineer & Tech Lead specializing in AI-powered security products. Building intelligent solutions that protect organizations from emerging cyber threats.">
+  <!-- Hero Section -->
+  <section class="section pt-20 pb-16">
     <div class="container">
-      <div class="row justify-center">
-        <div class="lg:col-7 md:col-9 mb-8 text-center">
-          <h1
-            set:html={markdownify(banner.title)}
-            class="mb-4 text-h3 lg:text-h1"
-          />
-          <p set:html={markdownify(banner.content)} class="mb-8" />
-          {
-            banner.button.enable && (
-              <a
-                class="btn btn-primary"
-                href={banner.button.link}
-                target={
-                  banner.button.link.startsWith("http") ? "_blank" : "_self"
-                }
-                rel="noopener"
+      <div class="row items-center">
+        <!-- Left side - Text content -->
+        <div class="lg:col-8 mb-8 lg:mb-0">
+          <div class="mb-6">
+            <h1 class="h1 mb-4">
+              Hi, I'm <span class="text-primary">Emmanuelle</span> 👋
+            </h1>
+            <h2 class="h4 mb-6 font-medium text-text/80">
+              Senior Software Engineer & Tech Lead
+            </h2>
+            <p class="text-lg text-text/70 mb-8 leading-relaxed max-w-2xl">
+              I specialize in building <strong class="text-primary">AI-powered security products</strong> 
+              that protect organizations from emerging cyber threats. Currently at 
+              <a href="https://www.datadoghq.com" target="_blank" rel="noopener" class="text-primary hover:underline font-semibold">Datadog</a>, 
+              I work on cutting-edge solutions like attacker clustering mechanisms and AI Guard for LLM protection.
+            </p>
+            
+            <!-- Social Links -->
+            <div class="flex flex-wrap gap-4 mb-8">
+              <a 
+                href="https://www.linkedin.com/in/emmanuelle-lejeail/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline-primary inline-flex items-center"
               >
-                {banner.button.label}
+                <svg class="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                </svg>
+                LinkedIn
               </a>
-            )
-          }
-        </div>
-        {
-          banner.image && (
-            <div class="col-12">
-              <ImageMod
-                src={banner.image}
-                height={380}
-                width={1200}
-                alt="banner"
-                format="webp"
-              />
+              <a 
+                href="https://github.com/emmlejeail" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline-primary inline-flex items-center"
+              >
+                <svg class="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                </svg>
+                GitHub
+              </a>
+              <a 
+                href="/publications"
+                class="btn btn-outline-primary inline-flex items-center"
+              >
+                📝 Publications
+              </a>
             </div>
-          )
-        }
-      </div>
-    </div>
-  </section>
-  <!-- /Banner -->
 
-  <!-- Features -->
-  {
-    features.map((feature, index: number) => (
-      <section class={`section-sm ${index % 2 === 0 && "bg-gradient"}`}>
-        <div class="container">
-          <div class="row items-center justify-between">
-            <div
-              class={`mb:md-0 mb-6 md:col-5 ${index % 2 !== 0 && "md:order-2"}`}
-            >
-              <ImageMod
-                src={feature.image}
-                height={480}
-                width={520}
-                alt={feature.title}
-                format="webp"
-              />
-            </div>
-            <div class={`md:col-7 lg:col-6 ${index % 2 !== 0 && "md:order-1"}`}>
-              <h2 set:html={markdownify(feature.title)} class="mb-4" />
-              <p set:html={markdownify(feature.content)} class="mb-8 text-lg" />
-              <ul>
-                {feature.bulletpoints.map((bullet: string) => (
-                  <li class="relative mb-4 pl-6">
-                    <FaCheck className={"absolute left-0 top-1.5"} />
-                    <span set:html={markdownify(bullet)} />
-                  </li>
-                ))}
-              </ul>
-              {feature.button.enable && (
-                <a class="btn btn-primary mt-5" href={feature.button.link}>
-                  {feature.button.label}
-                </a>
-              )}
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-4">
+              <a href="/about" class="btn btn-primary">
+                More About Me
+              </a>
+              <a href="/contact" class="btn btn-outline-primary">
+                Get In Touch
+              </a>
             </div>
           </div>
         </div>
-      </section>
-    ))
-  }
-  <!-- /Features -->
 
-  <Testimonial testimonial={testimonial} />
-  <CallToAction call_to_action={call_to_action} />
+        <!-- Right side - Profile image -->
+        <div class="lg:col-4">
+          <div class="text-center">
+            <ImageMod
+              class="mx-auto rounded-2xl shadow-xl"
+              src="/images/LEJEAIL_EMMANUELLE-09.jpg"
+              width={280}
+              height={280}
+              alt="Emmanuelle Lejeail"
+              format="webp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section-sm bg-theme-light/50 dark:bg-darkmode-theme-light/50">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <h3 class="h5 text-center mb-8 text-text/70">Technologies I work with</h3>
+          <div class="flex flex-wrap justify-center items-center gap-8">
+            {techStack.map((tech) => (
+              <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-theme-light shadow-sm">
+                <span class="text-2xl">{tech.icon}</span>
+                <span class="font-medium text-sm">{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="lg:col-12">
+          <div class="text-center mb-12">
+            <h2 class="h2 mb-4">Latest Articles</h2>
+            <p class="text-lg text-text/70">
+              Thoughts on AI security, software engineering, and technology leadership
+            </p>
+          </div>
+          
+          <div class="row gy-4 justify-center">
+            {featuredPosts?.slice(0, 3).map((post) => (
+              <div class="md:col-6 lg:col-4">
+                <BlogCard data={post} />
+              </div>
+            ))}
+          </div>
+          
+          <div class="text-center mt-10">
+            <a href="/blog" class="btn btn-outline-primary">
+              View All Articles
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Do -->
+  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8 text-center">
+          <h2 class="h2 mb-6">What I Do</h2>
+          <p class="text-lg text-text/70 mb-12 leading-relaxed">
+            I build intelligent security solutions that adapt and learn from emerging threats, 
+            helping organizations stay protected in an ever-evolving cyber landscape.
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <span class="text-2xl">🛡️</span>
+              </div>
+              <h3 class="h5 mb-3">AI Security</h3>
+              <p class="text-text/70 text-sm">
+                Building machine learning models for threat detection and automated security response
+              </p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <span class="text-2xl">👥</span>
+              </div>
+              <h3 class="h5 mb-3">Tech Leadership</h3>
+              <p class="text-text/70 text-sm">
+                Mentoring engineering teams and driving technical strategy for complex security products
+              </p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <span class="text-2xl">🚀</span>
+              </div>
+              <h3 class="h5 mb-3">Innovation</h3>
+              <p class="text-text/70 text-sm">
+                Research and development of next-generation cybersecurity technologies and methodologies
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
