@@ -66,12 +66,12 @@ const techStack = [
         <div class="lg:col-8 mb-6 lg:mb-0">
           <div class="mb-6">
             <h1 class="h1 mb-4">
-              Hi, I'm <span class="text-primary">Emmanuelle</span> 👋
+              Hi, I'm <span class="text-primary dark:text-white">Emmanuelle</span> 👋
             </h1>
-            <h2 class="h4 mb-6 font-medium text-text/80">
+            <h2 class="h4 mb-6 font-medium text-text/80 dark:text-darkmode-text">
               Senior Software Engineer & Tech Lead
             </h2>
-            <p class="text-lg text-text/70 mb-8 leading-relaxed max-w-2xl">
+            <p class="text-lg text-text/70 dark:text-darkmode-text mb-8 leading-relaxed max-w-2xl">
               I love building software that makes the internet safer. At 
               <a href="https://www.datadoghq.com" target="_blank" rel="noopener" class="text-primary hover:underline font-semibold">Datadog</a>, 
               I create <strong class="text-primary">AI-powered tools</strong> that help security teams catch attackers before they can do damage.
@@ -143,10 +143,10 @@ const techStack = [
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-10">
-          <h3 class="h5 text-center mb-8 text-text/70">Technologies I work with</h3>
+          <h3 class="h5 text-center mb-8 text-text/70 dark:text-darkmode-text">Technologies I work with</h3>
           <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
             {techStack.map((tech) => (
-              <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-theme-light shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-darkmode-body shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                 <div class="w-12 h-12 flex items-center justify-center">
                   <img 
                     src={tech.logo} 
@@ -157,7 +157,7 @@ const techStack = [
                     onmouseout={`this.style.filter = 'grayscale(1)';`}
                   />
                 </div>
-                <span class="font-medium text-xs text-center text-text/70 group-hover:text-text transition-colors duration-300">
+                <span class="font-medium text-xs text-center text-text/70 group-hover:text-text dark:text-darkmode-text dark:group-hover:text-darkmode-text transition-colors duration-300">
                   {tech.name}
                 </span>
               </div>
@@ -175,7 +175,7 @@ const techStack = [
         <div class="lg:col-12">
           <div class="text-center mb-8">
             <h2 class="h2 mb-4">Latest Articles</h2>
-            <p class="text-lg text-text/70">
+            <p class="text-lg text-text/70 dark:text-darkmode-text">
               Thoughts on AI security, software engineering, and technology leadership
             </p>
           </div>
@@ -204,7 +204,7 @@ const techStack = [
       <div class="row justify-center">
         <div class="lg:col-8 text-center">
           <h2 class="h2 mb-4">What I Do</h2>
-          <p class="text-lg text-text/70 mb-8 leading-relaxed">
+          <p class="text-lg text-text/70 dark:text-darkmode-text mb-8 leading-relaxed">
             I build systems that automatically detect suspicious activity and help security teams respond faster. 
             It's like creating smart assistants for cybersecurity professionals.
           </p>
@@ -215,7 +215,7 @@ const techStack = [
                 <span class="text-2xl">🛡️</span>
               </div>
               <h3 class="h5 mb-3">AI & Security</h3>
-              <p class="text-text/70 text-sm">
+              <p class="text-text/70 dark:text-darkmode-text text-sm">
                 Building product & features that leverage AI to automate security investigations and protect applications
               </p>
             </div>
@@ -225,7 +225,7 @@ const techStack = [
                 <span class="text-2xl">👥</span>
               </div>
               <h3 class="h5 mb-3">Tech Leadership</h3>
-              <p class="text-text/70 text-sm">
+              <p class="text-text/70 dark:text-darkmode-text text-sm">
                 Mentoring junior engineers and driving technical strategy for security products
               </p>
             </div>
@@ -235,7 +235,7 @@ const techStack = [
                 <span class="text-2xl">🚀</span>
               </div>
               <h3 class="h5 mb-3">Tinkering</h3>
-              <p class="text-text/70 text-sm">
+              <p class="text-text/70 dark:text-darkmode-text text-sm">
                 Experimenting with latest technologies, building small PoCs for fun
               </p>
             </div>

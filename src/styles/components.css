@@ -31,41 +31,82 @@
   @apply text-text dark:text-darkmode-text;
 }
 
+.prose h1 {
+  @apply mt-8 mb-6 text-3xl font-bold !text-dark dark:!text-white;
+}
+
 .prose h2 {
-  @apply mt-12 mb-6 text-2xl font-bold text-dark dark:text-darkmode-light;
+  @apply mt-12 mb-6 text-2xl font-bold !text-dark dark:!text-white;
 }
 
 .prose h3 {
-  @apply mt-8 mb-4 text-xl font-semibold text-dark dark:text-darkmode-light;
+  @apply mt-8 mb-4 text-xl font-semibold !text-dark dark:!text-white;
+}
+
+.prose h4 {
+  @apply mt-6 mb-3 text-lg font-semibold !text-dark dark:!text-white;
+}
+
+.prose h5 {
+  @apply mt-4 mb-2 text-base font-semibold !text-dark dark:!text-white;
+}
+
+.prose h6 {
+  @apply mt-4 mb-2 text-sm font-semibold !text-dark dark:!text-white;
 }
 
 .prose p {
-  @apply mb-6 leading-relaxed;
+  @apply mb-6 leading-relaxed !text-text dark:!text-darkmode-text;
 }
 
 .prose strong {
-  @apply font-semibold text-dark dark:text-darkmode-light;
+  @apply font-semibold !text-dark dark:!text-white;
 }
 
 .prose ul {
   @apply mb-6 space-y-2;
+  list-style: none !important;
+  padding-left: 0 !important;
 }
 
 .prose ul li {
-  @apply relative pl-6;
+  @apply relative pl-6 !text-text dark:!text-darkmode-text;
+  list-style: none !important;
 }
 
 .prose ul li:before {
   content: "•";
-  @apply absolute left-2 text-primary font-bold;
+  @apply absolute left-0 text-primary font-bold;
+}
+
+.prose ul li::marker {
+  content: none !important;
 }
 
 .prose blockquote {
   @apply border-l-4 border-primary pl-6 my-6 italic opacity-80;
 }
 
+.prose a {
+  @apply text-primary hover:underline dark:text-darkmode-primary;
+}
+
+.prose ol {
+  @apply mb-6 space-y-2;
+}
+
+.prose ol li {
+  @apply relative pl-6 !text-text dark:!text-darkmode-text;
+}
+
+.prose ol li:before {
+  counter-increment: step-counter;
+  content: counter(step-counter);
+  @apply absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-white;
+}
+
 .prose code {
-  @apply bg-theme-light dark:bg-darkmode-theme-light px-2 py-1 rounded text-sm;
+  @apply bg-theme-light dark:bg-darkmode-light px-2 py-1 rounded text-sm;
 }
 
 /* notice */
@@ -191,7 +232,7 @@
 /* content style */
 .content {
   @apply prose max-w-none;
-  @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em] prose-headings:text-text-dark dark:prose-headings:text-darkmode-text-dark;
+  @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em] prose-headings:text-text-dark dark:prose-headings:text-white;
   @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
   @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
   @apply prose-h3:text-h3-sm md:prose-h3:text-h3;

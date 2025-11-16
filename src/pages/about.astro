@@ -21,7 +21,7 @@ const experiences = [
     company: "Datadog",
     companyLogo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/datadog/datadog-original.svg",
     period: "2024 - Present",
-    location: "Remote",
+    location: "Paris, France",
     achievements: [
       "Built a system that groups attackers by behavior to help security teams spot patterns",
       "Mentored junior engineers and helped them grow into security experts",
@@ -37,7 +37,7 @@ const experiences = [
     company: "Datadog",
     companyLogo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/datadog/datadog-original.svg",
     period: "2022 - 2024",
-    location: "Remote",
+    location: "Paris, France",
     achievements: [
       "Built key features that help developers secure their applications",
       "Made our attack detection smarter - especially for attacks spread across multiple systems",
@@ -196,8 +196,8 @@ const allSkills = [
       <div class="row items-center">
         <div class="lg:col-8">
           <div class="mb-8 lg:mb-0">
-            <h1 class="h1 mb-4">Emmanuelle Lejeail</h1>
-            <h2 class="h4 mb-6 text-primary">Senior Software Engineer & Tech Lead</h2>
+            <h1 class="h1 mb-4 text-dark dark:text-white">Emmanuelle Lejeail</h1>
+            <h2 class="h4 mb-6 text-primary dark:text-white">Senior Software Engineer & Tech Lead</h2>
             <p class="text-lg text-text/80 mb-8 leading-relaxed">
               I love building software that makes the internet safer. I work with AI and machine learning to create tools that help catch attackers and protect applications from getting compromised.
             </p>
@@ -262,10 +262,10 @@ const allSkills = [
           <h2 class="h2 mb-8 text-center">Professional Experience</h2>
           <div class="space-y-8">
             {experiences.map((exp, index) => (
-              <div class="group relative overflow-hidden rounded-2xl border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:bg-theme-light">
+              <div class="group relative overflow-hidden rounded-2xl border border-border/50 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:bg-darkmode-body">
                 <!-- Timeline dot -->
                 <div class="absolute -left-4 top-8 hidden h-8 w-8 rounded-full bg-primary shadow-lg lg:flex lg:items-center lg:justify-center">
-                  <div class="h-4 w-4 rounded-full bg-white"></div>
+                  <div class="h-4 w-4 rounded-full bg-white dark:bg-darkmode-light"></div>
                 </div>
                 
                 <div class="lg:ml-8">
@@ -275,13 +275,13 @@ const allSkills = [
                         <img 
                           src={exp.companyLogo} 
                           alt={exp.company}
-                          class="w-12 h-12 object-contain rounded-lg bg-white p-2 shadow-sm border border-border/20"
+                          class="w-12 h-12 object-contain rounded-lg bg-white dark:bg-darkmode-body p-2 shadow-sm border border-border/20 dark:border-darkmode-border/40"
                         />
                       </div>
                       <div>
                         <h3 class="text-xl font-bold text-dark dark:text-white mb-2">{exp.title}</h3>
-                        <p class="text-lg font-semibold text-primary mb-1">{exp.company}</p>
-                        <p class="text-sm text-text/70">{exp.location}</p>
+                        <p class="text-lg font-semibold text-primary dark:text-darkmode-primary mb-1">{exp.company}</p>
+                        <p class="text-sm text-text/70 dark:text-darkmode-text">{exp.location}</p>
                       </div>
                     </div>
                     <div class="text-right">
@@ -292,22 +292,22 @@ const allSkills = [
                   </div>
                   
                   <div class="mb-6">
-                    <h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-text/70">Key Achievements</h4>
+                    <h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-text/70 dark:text-darkmode-text">Key Achievements</h4>
                     <ul class="space-y-2">
                       {exp.achievements.map((achievement) => (
                         <li class="flex items-start gap-3">
                           <div class="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"></div>
-                          <span class="text-text/80">{achievement}</span>
+                          <span class="text-text/80 dark:text-darkmode-text">{achievement}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-text/70">Technologies Used</h4>
+                    <h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-text/70 dark:text-darkmode-text">Technologies Used</h4>
                     <div class="flex flex-wrap gap-2">
                       {exp.technologies.map((tech) => (
-                        <span class="rounded-full bg-theme-light px-3 py-1 text-xs font-medium text-text/70 dark:bg-darkmode-theme-light">
+                        <span class="rounded-full bg-theme-light px-3 py-1 text-xs font-medium text-text/70 dark:bg-darkmode-light dark:text-darkmode-text">
                           {tech}
                         </span>
                       ))}
@@ -330,7 +330,7 @@ const allSkills = [
           <h2 class="h2 mb-8 text-center">Skills & Technologies</h2>
           <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-6">
             {allSkills.map((skill) => (
-              <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-theme-light shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <div class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-darkmode-body shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                 <div class="w-12 h-12 flex items-center justify-center">
                   <img 
                     src={skill.logo} 
@@ -338,7 +338,7 @@ const allSkills = [
                     class="w-10 h-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
-                <span class="font-medium text-xs text-center text-text/70 group-hover:text-text transition-colors duration-300">
+                <span class="font-medium text-xs text-center text-text/70 group-hover:text-text dark:text-darkmode-text dark:group-hover:text-darkmode-text transition-colors duration-300">
                   {skill.name}
                 </span>
               </div>
@@ -355,20 +355,20 @@ const allSkills = [
       <div class="row justify-center">
         <div class="lg:col-8">
           <h2 class="h2 mb-8 text-center">Education</h2>
-          <div class="rounded-2xl border border-border/50 bg-white p-8 shadow-sm dark:bg-theme-light">
+          <div class="rounded-2xl border border-border/50 bg-white p-8 shadow-sm dark:bg-darkmode-body">
             <div class="flex items-center gap-6">
               <div class="flex-shrink-0">
                 <img 
                   src="/images/utc.png" 
                   alt="Université de Technologie de Compiègne"
-                  class="w-16 h-16 object-contain rounded-lg bg-white p-2 shadow-sm border border-border/20"
+                  class="w-16 h-16 object-contain rounded-lg bg-white dark:bg-darkmode-body p-2 shadow-sm border border-border/20 dark:border-darkmode-border/40"
                 />
               </div>
               <div class="flex-1">
                 <h3 class="text-xl font-bold mb-2">Master of Science in Computer Science</h3>
                 <p class="text-lg text-primary font-semibold mb-2">Université de Technologie de Compiègne</p>
-                <p class="text-text/70 mb-2">Minor in Data Science and Machine Learning</p>
-                <p class="text-sm text-text/60">Graduated 2019</p>
+                <p class="text-text/70 dark:text-darkmode-text mb-2">Minor in Data Science and Machine Learning</p>
+                <p class="text-sm text-text/60 dark:text-darkmode-text">Graduated 2019</p>
               </div>
             </div>
           </div>
@@ -383,7 +383,7 @@ const allSkills = [
       <div class="row justify-center">
         <div class="lg:col-10">
           <h2 class="h2 mb-8 text-center">Beyond the Code</h2>
-          <p class="text-center text-lg text-text/70 mb-12 leading-relaxed">
+          <p class="text-center text-lg text-text/70 dark:text-darkmode-text mb-12 leading-relaxed">
             When I'm not building security tools, these passions keep me curious and creative
           </p>
           
@@ -394,7 +394,7 @@ const allSkills = [
                 <span class="text-3xl">🏃‍♀️</span>
               </div>
               <h3 class="h5 mb-3">Running</h3>
-              <p class="text-text/70 text-sm leading-relaxed">
+              <p class="text-text/70 dark:text-darkmode-text text-sm leading-relaxed">
                 Long runs for mental clarity and endurance. Some of my best technical insights happen at mile 5.
               </p>
             </div>
@@ -405,7 +405,7 @@ const allSkills = [
                 <span class="text-3xl">🍜</span>
               </div>
               <h3 class="h5 mb-3">Ramen</h3>
-              <p class="text-text/70 text-sm leading-relaxed">
+              <p class="text-text/70 dark:text-darkmode-text text-sm leading-relaxed">
                 Cooking and eating ramen is my meditation. The patience for good broth mirrors good code craftsmanship.
               </p>
             </div>
@@ -416,7 +416,7 @@ const allSkills = [
                 <span class="text-3xl">🎲</span>
               </div>
               <h3 class="h5 mb-3">D&D</h3>
-              <p class="text-text/70 text-sm leading-relaxed">
+              <p class="text-text/70 dark:text-darkmode-text text-sm leading-relaxed">
                 Collaborative storytelling and creative problem-solving. Being a DM teaches you about creating engaging experiences.
               </p>
             </div>
@@ -427,7 +427,7 @@ const allSkills = [
                 <span class="text-3xl">🍷</span>
               </div>
               <h3 class="h5 mb-3">Wine</h3>
-              <p class="text-text/70 text-sm leading-relaxed">
+              <p class="text-text/70 dark:text-darkmode-text text-sm leading-relaxed">
                 Understanding terroir—how environment shapes outcomes. Like pairing engineers with the right opportunities.
               </p>
             </div>

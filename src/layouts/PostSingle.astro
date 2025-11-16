@@ -88,7 +88,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
                 {
                   tags.map((tag: string) => (
                     <a
-                      class="inline-flex items-center rounded-full bg-theme-light px-4 py-2 text-sm font-medium text-text/70 transition-all hover:bg-primary hover:text-white dark:bg-darkmode-theme-light dark:hover:bg-darkmode-primary"
+                      class="inline-flex items-center rounded-full bg-theme-light px-4 py-2 text-sm font-medium text-text/70 transition-all hover:bg-primary hover:text-white dark:bg-darkmode-light dark:hover:bg-darkmode-primary"
                       href={`/tags/${slugify(tag)}`}
                     >
                       #{humanize(tag)}
