@@ -16,6 +16,7 @@ const fontFamilies = Object.entries(themeConfig.fonts.font_family)
 
 const defaultColorGroups = [
   { colors: themeConfig.colors.default.theme_color, prefix: "" },
+  { colors: themeConfig.colors.default.theme_color, prefix: "theme-" },
   { colors: themeConfig.colors.default.text_color, prefix: "" },
 ];
 const darkColorGroups = [];
@@ -23,6 +24,10 @@ if (themeConfig.colors.darkmode?.theme_color) {
   darkColorGroups.push({
     colors: themeConfig.colors.darkmode.theme_color,
     prefix: "darkmode-",
+  });
+  darkColorGroups.push({
+    colors: themeConfig.colors.darkmode.theme_color,
+    prefix: "darkmode-theme-",
   });
 }
 if (themeConfig.colors.darkmode?.text_color) {
